@@ -8,13 +8,12 @@ import GlossaryList from './components/GlossaryList.jsx';
 const App = () => {
 
   const add = (values) => {
-    console.log(`${values} was searched`);
-    axios.post('/glossary', values);
+    console.log(`${values.word} ${values.definition} was input`);
+    // axios.post('/glossary', values);
   }
 
   return (
     <div id="app">
-      <p>Hello, World!</p>
       <h1>Glossary App</h1>
       <InputForm onInput={add} />
       <Search />

@@ -10,7 +10,6 @@ let glossarySchema = mongoose.Schema({
 let Glossary = mongoose.model('Glossary', glossarySchema);
 let saveEntry = (data) => {
   return Glossary.create(data);
-  console.log('data from posting', data);
 }
 let getEntries = () => {
   return Glossary.find({});

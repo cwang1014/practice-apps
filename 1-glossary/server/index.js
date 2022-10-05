@@ -10,12 +10,15 @@ app.use(express.static(path.join(__dirname, "../client/dist")));
 app.use(express.json());
 
 app.get('/glossary', function (req, res) {
-  getEntries().then(data => console.log('got data', data))
+  getEntries()
+    .then(data => res.status(200).json(data))
+    .catch(err => res.status(404).end())
 });
 
 app.post('/glossary', function (req, res) {
   saveEntry(req.body)
-    .then(data => console.log(data));
+    .then(data => res.status(201).json(data))
+    .catch(err => res.status(404).end());
 });
 
 app.listen(process.env.PORT);

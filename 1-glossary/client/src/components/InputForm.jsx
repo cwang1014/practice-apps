@@ -2,18 +2,31 @@ import React, { useState } from 'react';
 
 const InputForm = ({ onInput }) => {
 
-  const [input, setInput] = useState('');
+  const [inputWord, setInputWord] = useState('');
+  const [inputDef, setInputDef] = useState('');
 
   const add = (e) => {
     e.preventDefault();
-    onInput(input);
+    let inputObj = {
+      word: inputWord,
+      definition: inputDef
+    }
+    onInput(inputObj);
   }
 
   return (
     <div id="inputform">
       <form>
-        <input placeholder="Input word" />
-        <input placeholder="Input definition" />
+        <input
+          value={inputWord}
+          placeholder="Input word"
+          onChange={(e) => setInputWord(e.target.value)}
+        />
+        <input
+          value={inputDef}
+          placeholder="Input definition"
+          onChange={(e) => setInputDef(e.target.value)}
+        />
         <button onClick={add}>Add to Glossary</button>
       </form>
     </div>
