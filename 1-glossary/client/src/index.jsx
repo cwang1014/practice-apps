@@ -26,7 +26,10 @@ const App = () => {
   }
 
   const remove = (wordToRemove) => {
-    axios.delete()
+    console.log(`deleting ${wordToRemove}`);
+    axios.delete('/glossary', wordToRemove)
+      .then(result => console.log('delete result', result))
+      .catch(err => console.log('error deleting word', wordToRemove.word))
   }
 
   return (

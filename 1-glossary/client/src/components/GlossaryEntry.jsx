@@ -5,7 +5,7 @@ const GlossaryEntry = ({ entry, onDelete }) => {
     <div id="entry">
       <li>{entry.word}: {entry.definition}</li>
       <button>edit</button>
-      <button onClick={(e) => console.log(e.target.parentElement.innerText)}>delete</button>
+      <button onClick={() => onDelete({ word: entry.word })}>delete</button>
     </div>
   );
 }
