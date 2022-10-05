@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const InputForm = (props) => {
+const InputForm = ({ onInput }) => {
+
+  const [input, setInput] = useState('');
+
+  const add = (e) => {
+    e.preventDefault();
+    onInput(input);
+  }
+
   return (
     <div id="inputform">
       <form>
         <input placeholder="Input word" />
         <input placeholder="Input definition" />
-        <button>Add to Glossary</button>
+        <button onClick={add}>Add to Glossary</button>
       </form>
     </div>
   );
