@@ -1,9 +1,11 @@
 import React from 'react';
 
-const GlossaryEntry = (props) => {
+const GlossaryEntry = ({ entry, onDelete }) => {
   return (
     <div id="entry">
-      <li>entry</li>
+      <li>{entry.word}: {entry.definition}</li>
+      <button>edit</button>
+      <button onClick={(e) => console.log(e.target.parentElement.innerText)}>delete</button>
     </div>
   );
 }

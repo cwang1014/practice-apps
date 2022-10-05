@@ -1,15 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { render } from 'react-dom';
-import axios from 'axios';
 import InputForm from './components/InputForm.jsx';
 import Search from './components/Search.jsx';
 import GlossaryList from './components/GlossaryList.jsx';
 
+const axios = require('axios');
+
 const App = () => {
 
-  const add = (values) => {
-    console.log(`${values.word} ${values.definition} was input`);
-    // axios.post('/glossary', values);
+  const [list, setList] = useState([]);
+
+  useEffect(() => {
+    axios.get('/glossary')
+      .then(result => setList(result.data))
+      .catch(err => console.log('error getting from mongodb'));
+  }, []);
+
+  // console.log('list', list);
+
+  const add = (inputObj) => {
+    console.log(`${inputObj.word} ${inputObj.definition} was input`);
+    axios.post('/glossary', inputObj)
+      .then(result => setList([...list, result.data]))
+      .catch(err => console.log('error posting data'));
+  }
+
+  const remove = (wordToRemove) => {
+    axios.delete()
   }
 
   return (
@@ -17,7 +34,7 @@ const App = () => {
       <h1>Glossary App</h1>
       <InputForm onInput={add} />
       <Search />
-      <GlossaryList />
+      <GlossaryList list={list} onDelete={remove} />
     </div>
   );
 }
