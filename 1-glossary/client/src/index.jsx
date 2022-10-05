@@ -1,6 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
 import InputForm from './components/InputForm.jsx';
+import Search from './components/Search.jsx';
+import GlossaryList from './components/GlossaryList.jsx';
 
 const App = () => {
   return (
@@ -8,6 +10,8 @@ const App = () => {
       <p>Hello, World!</p>
       <h1>Glossary App</h1>
       <InputForm />
+      <Search />
+      <GlossaryList />
     </div>
   );
 }
