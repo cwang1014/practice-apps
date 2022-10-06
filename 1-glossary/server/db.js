@@ -22,10 +22,18 @@ let getEntries = () => {
 }
 
 let deleteEntry = (word) => {
-  return Glossary.deleteOne(word)
+  return Glossary.deleteOne(word);
 }
+
+let updateEntry = (entryObj) => {
+  return Glossary.findOneAndUpdate({ word: entryObj.word }, {
+    definition: entryObj.definition
+  }, { new: true });
+}
+
 // 3. Export the models
 module.exports.saveEntry = saveEntry;
 module.exports.getEntries = getEntries;
 module.exports.deleteEntry = deleteEntry;
+module.exports.updateEntry = updateEntry;
 // 4. Import the models into any modules that need them

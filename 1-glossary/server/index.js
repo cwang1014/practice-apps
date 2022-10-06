@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const path = require("path");
-const { saveEntry, getEntries, deleteEntry } = require('./db.js');
+const { saveEntry, getEntries, deleteEntry, updateEntry } = require('./db.js');
 
 const app = express();
 
@@ -26,6 +26,13 @@ app.delete('/glossary/:word', function (req, res) {
   deleteEntry(req.params)
     .then(data => res.status(200).json(data))
     .catch(err => res.status(404).end())
+});
+
+app.put('/glossary/:word', function (req, res) {
+  console.log('req.body', req.body);
+  updateEntry(req.body)
+    .then(data => res.status(200).json(data))
+    .catch(err => res.status(404).end());
 });
 
 app.listen(process.env.PORT);
