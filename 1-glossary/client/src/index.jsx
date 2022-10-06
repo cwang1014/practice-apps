@@ -65,4 +65,5 @@ const App = () => {
     </div>
   );
 }
+
 render(<App />, document.getElementById('root'));
