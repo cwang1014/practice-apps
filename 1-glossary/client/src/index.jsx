@@ -16,7 +16,7 @@ const App = () => {
       .catch(err => console.log('error getting from mongodb'));
   }, []);
 
-  console.log('list', list);
+  // console.log('list', list);
 
   const add = (inputObj) => {
     // console.log(`${inputObj.word} ${inputObj.definition} was input`);
@@ -39,7 +39,11 @@ const App = () => {
     let newDefinition = prompt('Type in your new definition:', 'Definition');
     defObjToEdit.definition = newDefinition;
     axios.put(`/glossary/${defObjToEdit.word}`, defObjToEdit)
-      .then(result => console.log('edit result data', result.data))
+      .then(() => {
+        var editList = list.slice();
+        setList(editList);
+      })
+      .catch(err => console.log('error editing'));
   }
 
   return (

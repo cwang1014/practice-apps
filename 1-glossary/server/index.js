@@ -29,7 +29,7 @@ app.delete('/glossary/:word', function (req, res) {
 });
 
 app.put('/glossary/:word', function (req, res) {
-  console.log('req.body', req.body);
+  // console.log('req.body', req.body);
   updateEntry(req.body)
     .then(data => res.status(200).json(data))
     .catch(err => res.status(404).end());
