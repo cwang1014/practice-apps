@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
-const Search = ({ setList }) => {
+const Search = (props) => {
 
   const [search, setSearch] = useState('');
 
   const handleSearch = (e) => {
-    setList(e.target.value);
+    setSearch(e.target.value);
     console.log('search value', search);
   }
 
