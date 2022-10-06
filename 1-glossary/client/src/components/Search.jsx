@@ -1,19 +1,17 @@
 import React, { useState } from 'react';
 
-const Search = (props) => {
+const Search = ({ search }) => {
 
-  const [search, setSearch] = useState('');
-
-  const handleSearch = (e) => {
-    setSearch(e.target.value);
-    console.log('search value', search);
-  }
+  const [query, setQuery] = useState('');
 
   return (
     <div id="search">
       <form>
-        <input value={search} placeholder="search..." onChange={handleSearch} />
-        <button>Search Now!</button>
+        <input
+          value={query}
+          placeholder="search..."
+          onChange={(e) => { setQuery(e.target.value); }} />
+        <button onClick={(e) => { e.preventDefault(); search(query); }}>Search Now!</button>
       </form>
     </div>
   );

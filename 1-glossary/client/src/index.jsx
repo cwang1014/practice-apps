@@ -46,11 +46,21 @@ const App = () => {
       .catch(err => console.log('error editing'));
   }
 
+  const search = (query) => {
+    let searchList = [];
+    list.forEach(entryObj => {
+      if (entryObj.word.includes(query)) {
+        searchList.push(entryObj);
+      }
+    });
+    setList(searchList);
+  }
+
   return (
     <div id="app">
       <h1>Glossary App</h1>
       <InputForm onInput={add} />
-      <Search />
+      <Search search={search} />
       <GlossaryList list={list} onDelete={remove} onEdit={edit} />
     </div>
   );
