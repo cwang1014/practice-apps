@@ -9,6 +9,7 @@ const axios = require('axios');
 const App = () => {
 
   const [list, setList] = useState([]);
+  const [query, setQuery] = useState('');
 
   useEffect(() => {
     axios.get('/glossary')
@@ -46,22 +47,22 @@ const App = () => {
       .catch(err => console.log('error editing'));
   }
 
-  const search = (query) => {
-    let searchList = [];
-    list.forEach(entryObj => {
-      if (entryObj.word.includes(query)) {
-        searchList.push(entryObj);
-      }
-    });
-    setList(searchList);
-  }
+  // const search = (query) => {
+  //   let searchList = [];
+  //   list.forEach(entryObj => {
+  //     if (entryObj.word.includes(query)) {
+  //       searchList.push(entryObj);
+  //     }
+  //   });
+  //   setList(searchList);
+  // }
 
   return (
     <div id="app">
       <h1>Glossary App</h1>
       <InputForm onInput={add} />
-      <Search search={search} />
-      <GlossaryList list={list} onDelete={remove} onEdit={edit} />
+      <Search query={query} setQuery={setQuery} />
+      <GlossaryList list={list} onDelete={remove} onEdit={edit} query={query} />
     </div>
   );
 }

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
-const Search = ({ search }) => {
+const Search = ({ query, setQuery }) => {
 
-  const [query, setQuery] = useState('');
+
 
   return (
     <div id="search">
@@ -11,7 +11,11 @@ const Search = ({ search }) => {
           value={query}
           placeholder="search..."
           onChange={(e) => { setQuery(e.target.value); }} />
-        <button onClick={(e) => { e.preventDefault(); search(query); }}>Search Now!</button>
+        {/* <button onClick={(e) => {
+          e.preventDefault();
+          search(query);
+          // setQuery('');
+        }}>Search Now!</button> */}
       </form>
     </div>
   );

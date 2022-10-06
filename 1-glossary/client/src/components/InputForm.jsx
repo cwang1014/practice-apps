@@ -12,6 +12,8 @@ const InputForm = ({ onInput }) => {
       definition: inputDef
     }
     onInput(inputObj);
+    setInputWord('');
+    setInputDef('');
   }
 
   return (
