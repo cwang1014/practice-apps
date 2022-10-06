@@ -21,8 +21,9 @@ app.post('/glossary', function (req, res) {
     .catch(err => res.status(404).end());
 });
 
-app.delete('/glossary', function (req, res) {
-  deleteEntry(req.body)
+app.delete('/glossary/:word', function (req, res) {
+  console.log('request params', req.params);
+  deleteEntry(req.params)
     .then(data => res.status(200).json(data))
     .catch(err => res.status(404).end())
 });

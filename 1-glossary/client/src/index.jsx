@@ -19,7 +19,7 @@ const App = () => {
   // console.log('list', list);
 
   const add = (inputObj) => {
-    console.log(`${inputObj.word} ${inputObj.definition} was input`);
+    // console.log(`${inputObj.word} ${inputObj.definition} was input`);
     axios.post('/glossary', inputObj)
       .then(result => setList([...list, result.data]))
       .catch(err => console.log('error posting data'));
@@ -27,8 +27,11 @@ const App = () => {
 
   const remove = (wordToRemove) => {
     console.log(`deleting ${wordToRemove}`);
-    axios.delete('/glossary', wordToRemove)
-      .then(result => console.log('delete result', result))
+    axios.delete(`/glossary/${wordToRemove}`)
+      .then(() => {
+        var newList = list.filter(wordObj => wordObj.word !== wordToRemove);
+        setList(newList);
+      })
       .catch(err => console.log('error deleting word', wordToRemove.word))
   }
 
