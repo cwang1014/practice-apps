@@ -22,7 +22,7 @@ app.post('/glossary', function (req, res) {
 });
 
 app.delete('/glossary/:word', function (req, res) {
-  console.log('request params', req.params);
+  // console.log('request params', req.params);
   deleteEntry(req.params)
     .then(data => res.status(200).json(data))
     .catch(err => res.status(404).end())
