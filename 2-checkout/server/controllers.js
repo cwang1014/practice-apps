@@ -23,5 +23,17 @@ module.exports = {
       }
       res.status(201).end();
     })
+  },
+
+  postForm3: (req, res) => {
+    let form3 = req.body;
+    let seshid = req.session_id;
+    form3.sessionid = seshid;
+    models.create3(form3, (err) => {
+      if (err) {
+        res.status(500).end();
+      }
+      res.status(201).end();
+    })
   }
 }
