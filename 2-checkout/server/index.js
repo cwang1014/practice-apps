@@ -21,7 +21,8 @@ app.use(logger);
 app.use(express.static(path.join(__dirname, "../client/dist")));
 app.use(express.json());
 
-app.post('/checkout', controllers.postForm1);
+app.post('/checkout/form1', controllers.postForm1);
+app.post('/checkout/form2', controllers.postForm2);
 
 app.listen(process.env.PORT);
 console.log(`Listening at http://localhost:${process.env.PORT}`);

@@ -15,7 +15,7 @@ const App = () => {
     e.preventDefault();
     console.log('event', e);
     console.log('submitting form1');
-    axios.post('/checkout', {});
+    axios.post('/checkout/form1', {});
   }
 
   return (
