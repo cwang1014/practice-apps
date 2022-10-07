@@ -1,12 +1,12 @@
 import React from 'react';
 
-const Form1 = () => {
+const Form1 = ({ submitForm }) => {
   return (
     <form>
       <input placeholder='name' />
       <input placeholder='email' />
       <input placeholder='password' />
-      <button>Next</button>
+      <button onClick={submitForm}>Next</button>
     </form>
   );
 }
