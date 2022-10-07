@@ -35,5 +35,15 @@ module.exports = {
       }
       res.status(201).end();
     })
+  },
+
+  getForm: (req, res) => {
+    let seshid = req.session_id;
+    models.getAll(seshid, (err, form) => {
+      if (err) {
+        res.status(404).end()
+      }
+      res.status(200).json(form);
+    })
   }
 }
