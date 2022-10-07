@@ -30,5 +30,14 @@ module.exports = {
         callback(null);
       }
     })
+  },
+
+  getAll: (seshid, callback) => {
+    db.query('SELECT * FROM form1, form2, form3 WHERE sessionid=?', [seshid], (err, forms) => {
+      if (err) {
+        callback(err);
+      }
+      callback(null, forms);
+    })
   }
 };
