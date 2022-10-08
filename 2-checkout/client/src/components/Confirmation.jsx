@@ -3,11 +3,12 @@ import axios from 'axios';
 
 const ConfirmationForm = ({ formNum, setFormNum }) => {
 
-  const [formData, setFormData] = useState([]);
+  // const [formData, setFormData] = useState([]);
+  let formData;
 
   useEffect(() => {
     axios.get('/checkout')
-      .then(result => { console.log(result); setFormData(result.data) });
+      .then(result => { formData = result.data });
   }, []);
 
   const handlePurchase = (e) => {
@@ -24,7 +25,7 @@ const ConfirmationForm = ({ formNum, setFormNum }) => {
         </thead>
         <tbody>
           <tr>
-            <td>Name:</td><td>{console.log(formData)}</td>
+            <td>Name:</td><td>{formData.username /* having trouble here because I want to use the state to show the data but it is trying to render the data from result before it has been returned so it is checking an undefined formData array initially before useEffect runs */}</td>
           </tr>
         </tbody>
       </table>
