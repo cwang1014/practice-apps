@@ -14,7 +14,9 @@ const Form1 = ({ formNum, setFormNum }) => {
       username: username,
       email: email,
       password: password
-    });
+    })
+      .then(() => console.log('posted form1'))
+      .catch(err => alert('error posting form 1', err))
     setUsername('');
     setEmail('');
     setPassword('');
