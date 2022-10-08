@@ -3,12 +3,12 @@ CREATE DATABASE checkout;
 USE checkout;
 
 CREATE TABLE IF NOT EXISTS form (
-  sessionid VARCHAR(150) NOT NULL,
-  name VARCHAR(40) NOT NULL DEFAULT(''),
+  sessionid VARCHAR(150) NOT NULL DEFAULT(''),
+  username VARCHAR(40) NOT NULL DEFAULT(''),
   email VARCHAR(60) NOT NULL UNIQUE DEFAULT(''),
   password VARCHAR(16) NOT NULL DEFAULT(''),
   addressline1 VARCHAR(60) NOT NULL DEFAULT(''),
-  addressline2 VARCHAR(60),
+  addressline2 VARCHAR(60) DEFAULT(''),
   city VARCHAR(60) NOT NULL DEFAULT(''),
   state VARCHAR(30) NOT NULL DEFAULT(''),
   zip VARCHAR(5) NOT NULL DEFAULT(''),

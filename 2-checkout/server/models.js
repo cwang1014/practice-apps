@@ -2,7 +2,8 @@ const db = require('./db.js');
 
 module.exports = {
   create1: (doc, callback) => {
-    db.query('INSERT INTO form (sessionid, name, email, password) VALUES (?, ?, ?, ?)', [doc.sessionid, doc.name, doc.email, doc.password], (err) => {
+    db.query('INSERT INTO form (sessionid, username, email, password) VALUES (?, ?, ?, ?)', [doc.sessionid, doc.username, doc.email, doc.password], (err) => {
+      console.log('form1 error', err);
       if (err) {
         callback(err);
       } else {
@@ -13,6 +14,7 @@ module.exports = {
   // update
   create2: (doc2, callback) => {
     db.query('UPDATE form SET addressline1=?, addressline2=?, city=?, state=?, zip=?, phone=? WHERE sessionid=?', [doc2.addressline1, doc2.addressline2, doc2.city, doc2.state, doc2.zip, doc2.phone, doc2.sessionid], (err) => {
+      console.log('form2 error', err);
       if (err) {
         callback(err);
       } else {

@@ -1,6 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const ConfirmationForm = ({ formNum, setFormNum }) => {
+
+  const [formData, setFormData] = useState([]);
+
+  useEffect(() => {
+    axios.get('/checkout')
+      .then(result => { console.log(result); setFormData(result.data) });
+  }, []);
 
   const handlePurchase = (e) => {
     setFormNum(0);
@@ -16,8 +24,7 @@ const ConfirmationForm = ({ formNum, setFormNum }) => {
         </thead>
         <tbody>
           <tr>
-            <td>Your</td>
-            <td>Info</td>
+            <td>Name:</td><td>{console.log(formData)}</td>
           </tr>
         </tbody>
       </table>

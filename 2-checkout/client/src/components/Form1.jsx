@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const Form1 = ({ formNum, setFormNum }) => {
 
-  const [name, setName] = useState('');
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -11,18 +11,21 @@ const Form1 = ({ formNum, setFormNum }) => {
     e.preventDefault();
     setFormNum(formNum + 1);
     axios.post('/checkout/form1', {
-      name: name,
+      username: username,
       email: email,
       password: password
     });
+    setUsername('');
+    setEmail('');
+    setPassword('');
   }
 
   return (
     <form>
       <input
         placeholder='name'
-        value={name}
-        onChange={(e) => setName(e.target.value)}
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
       />
       <input
         placeholder='email'
