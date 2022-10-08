@@ -7,7 +7,8 @@ const ConfirmationForm = ({ formNum, setFormNum }) => {
 
   useEffect(() => {
     axios.get('/checkout')
-      .then(result => { setFormData(result.data) });
+      .then(result => { setFormData(result.data) })
+      .catch(err => console.log('error getting form'));
   }, []);
 
   const handlePurchase = (e) => {

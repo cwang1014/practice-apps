@@ -7,7 +7,6 @@ const controllers = require('./controllers.js');
 
 // Establishes connection to the database on server start
 const db = require("./db");
-
 const app = express();
 
 // Adds `req.session_id` based on the incoming cookie value.
