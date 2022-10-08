@@ -33,11 +33,11 @@ const App = () => {
         {formNum === 0 &&
           <button onClick={handleCheckout}>
             Checkout
-          </button> ||
-          formNum === 1 && <Form1 formNum={formNum} setFormNum={setFormNum} /> ||
-          formNum === 2 && <Form2 formNum={formNum} setFormNum={setFormNum} /> ||
-          formNum === 3 && <Form3 formNum={formNum} setFormNum={setFormNum} /> ||
-          formNum === 4 &&
+          </button>}
+        {formNum === 1 && <Form1 formNum={formNum} setFormNum={setFormNum} />}
+        {formNum === 2 && <Form2 formNum={formNum} setFormNum={setFormNum} />}
+        {formNum === 3 && <Form3 formNum={formNum} setFormNum={setFormNum} />}
+        {formNum === 4 &&
           <ConfirmationForm formNum={formNum} setFormNum={setFormNum} />
         }
       </div>
